@@ -6,7 +6,6 @@ module OT.Operations where
 import Data.Functor
 import Control.Applicative
 import Data.Aeson
-import Data.Vector
 import Data.Text
 
 type Property = Text
@@ -35,13 +34,9 @@ instance FromJSON PathSegment where
   parseJSON (Number a) = PosSeg  <$> parseJSON (Number a)
   parseJSON _ = fail "Invalid Pathsegment"
 
-instance FromJSON Path where
-  parseJSON (Array a) = parseJSON <$> a
-  parseJSON _ = fail "Can't convert non-array to Path"
-
-{-instance FromJSON JSONNumberOperation where-}
-  {-parseJSON (Object v) = Add <$> (v .: "p") <*> (v .: "ni")-}
-  {-parseJSON _          = fail-}
+instance FromJSON JSONNumberOperation where
+  parseJSON (Object v) = Add <$> (v .: "p") <*> (v .: "ni")
+  parseJSON _          = fail "Not an Object"
 
 {-opMap (Add path a) = Data.Map.fromList [("p", path), ("na", a)]-}
 {-opMap (StringInsert path pos str) = Data.Map.fromList [("si", )]-}
