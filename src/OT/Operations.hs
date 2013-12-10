@@ -34,7 +34,7 @@ instance FromJSON PathSegment where
   parseJSON _ = fail "Invalid Pathsegment"
 
 instance FromJSON JSONNumberOperation where
-  parseJSON (Object v) = Add <$> (v .: (Data.Text.pack "p")) <*> (v .: (Data.Text.pack "ni"))
+  parseJSON (Object v) = Add <$> (v .: (Data.Text.pack "p")) <*> (v .: (Data.Text.pack "na"))
   parseJSON _          = fail "Not an Object"
 
 
