@@ -1,0 +1,9 @@
+Name: ShareHS
+Version: 0.0.1
+Synopsis: ShareJS operations implemented in Haskell
+
+Build-Depends: base, text, aeson
+Build-Type: Simple
+Executable: haskelltracer
+Main-is: Operations.hs
+hs-source-dirs: src/OT
