@@ -1,7 +1,6 @@
-
+{-# LANGUAGE OverloadedStrings #-}
 module OT.Operations where 
 
-import Data.ByteString.Lazy.Char8 as ByteString
 import Data.Functor
 import Control.Applicative
 import Data.Aeson
@@ -34,12 +33,8 @@ instance FromJSON PathSegment where
   parseJSON _ = fail "Invalid Pathsegment"
 
 instance FromJSON JSONNumberOperation where
-  parseJSON (Object v) = Add <$> (v .: (Data.Text.pack "p")) <*> (v .: (Data.Text.pack "na"))
+  parseJSON (Object v) = Add <$> (v .: "p") <*> (v .: "na")
   parseJSON _          = fail "Not an Object"
-
-
-test = decode ( ByteString.pack "{\"p\": [], \"ni\": 1 }" ) :: Maybe JSONNumberOperation
-
 
 {-opMap (Add path a) = Data.Map.fromList [("p", path), ("na", a)]-}
 {-opMap (StringInsert path pos str) = Data.Map.fromList [("si", )]-}
