@@ -14,7 +14,7 @@ type Path = [PathSegment]
 
 data JSONNumberOperation = Add Path Int
                          deriving Show
-data JSONStringOperations = StringInsert Path Position Text
+data JSONStringOperation = StringInsert Path Position Text
                           | StringDelete Path Position Text
                           deriving Show
 data JSONArrayOperation = ArrayInsert  Path Position Value
